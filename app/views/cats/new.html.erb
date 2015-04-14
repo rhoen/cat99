@@ -1,0 +1,40 @@
+<marquee><h1>Create a New Cat!</h1></marquee>
+
+
+<form action="/cats", method="post">
+
+  <label for="cat_name">Name</label>
+  <input name="cat[name]" id="cat_name" type="text">
+  <br><br>
+  <label>SEX</label>
+  <input name="cat[sex]", id="cat_sex_m" type="radio" value="m">
+  <label for="cat_sex_m">Male</label>
+  <input name="cat[sex]", id="cat_sex_f" type="radio" value="f">
+  <label for="cat_sex_f">Female</label>
+  <br>
+  <br>
+  <label for="cat_description">Bio</label>
+  <textarea name="cat[description]" id="cat_description"></textarea>
+  <br><br>
+  <label for="cat_color">Color</label>
+  <select name="cat[color]">
+    <option value="black">Black</option>
+    <option value="calico">Calico</option>
+    <option value="incarnadine">Incarnadine</option>
+    <option value="seafoam">Seafoam</option>
+    <option value="lazuli">Lazuli</option>
+    <option value="spacegrey">Space Grey</option>
+    <option value="violet">Violet</option>
+    <option value"jadegreen">Jade Green</option>
+  </select>
+  <br><br>
+
+  <label for="cat_birth_date">Birth Date</label>
+
+  <input name="cat[birth_date]" id="cat_birth_date" type="date"></input>
+
+  <input type="submit" value="build my cat!">
+
+
+
+</form>

@@ -1,0 +1,11 @@
+<marquee><h1>The Cat <%=@cat.name%></h1></marquee>
+<table>
+<% [:birthday, :age, :color, :sex, :description].each do |el| %>
+  <tr>
+    <td> <%= el %> </td>
+    <td> <%= @cat.send(el) %> </td>
+  </tr>
+<% end %>
+</table>
+<br><br>
+<a href="<%= edit_cat_url(@cat.id) %>">Edit Cat</a>
