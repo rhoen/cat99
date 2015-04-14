@@ -28,18 +28,6 @@ class CatRentalRequest < ActiveRecord::Base
       .where('cat_id = ?', cat_id)
       .where('start_date < ? OR end_date > ?', end_date, start_date)
       .where('id <> ?', id)
-    # sql_string = <<-SQL
-    # SELECT
-    #   cr.*
-    # FROM
-    #   cat_rental_requests cr
-    # WHERE
-    #   cr.id = ?
-    #   AND
-    #   (cr.start_date < ?) OR (cr.end_date > ?)
-    #   AND
-    #     cr.status != 'APPROVED'
-    # SQL
-
   end
+
 end

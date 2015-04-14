@@ -1,0 +1,13 @@
+<marquee><h1>Your Request for the glorious <%= "#{@cat.color} #{@cat.name}" %></h1></marquee>
+<table>
+
+<% [:start_date, :end_date].each do |el| %>
+  <tr>
+    <td> <%= el %> </td>
+    <td> <%= @request.send(el) %> </td>
+  </tr>
+<% end %>
+</table>
+<br><br>
+<a href="<%= cat_url(@cat.id) %>">Cat</a><br>
+<a href="<%= edit_cat_rental_request_url(@request.id) %>">Edit Request</a>
