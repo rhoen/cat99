@@ -1,6 +1,9 @@
+<% if @cat.id.nil? %>
+<form action="/cats", method="post">
+<% else %>
 <form action="/cats/<%=@cat.id%>", method="post">
   <input type="hidden" name="_method" value="PATCH">
-
+<% end %>
 
   <label for="cat_name">Name</label>
   <input name="cat[name]" id="cat_name" type="text" value="<%= @cat.name %>">
@@ -18,6 +21,7 @@
   <label for="cat_color">Color</label>
 
   <select name="cat[color]">
+    <option value="">pick color</option>
     <% @cat.cat_colors.each do |color| %>
     <option value="<%= color %>" <%="selected" if color == @cat.color %>><%= color.capitalize %></option>
     <% end %>
@@ -29,7 +33,7 @@
   <input name="cat[birth_date]" id="cat_birth_date" type="date" value="<%=
   @cat.birth_date%>"></input>
 
-  <input type="submit" value="Update my cat!">
+  <input type="submit" value="<%= @cat.id ? "Update my cat!" : "Submit cat!"%>">
 
 
 

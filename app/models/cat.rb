@@ -2,6 +2,8 @@ class Cat < ActiveRecord::Base
   validates :name, presence: true
   validate :check_color
 
+  has_many :cat_rental_requests, dependent: :destroy
+
   COLORS = ["black", "calico", "incarnadine", "seafoam", "lazuli", "space grey", "violet", "jade green"]
 
 
