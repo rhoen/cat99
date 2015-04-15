@@ -3,6 +3,9 @@
 <% submit_text = @request.persisted? ? "Updated the request" : "Create new Request" %>
 <form action="<%= action_url %>", method="post">
   <input type="hidden" name="_method" value="<%= form_method %>">
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
 
 <select name="cat_rental_request[cat_id]">
   <option>Pick a cat!</option>
@@ -22,3 +25,5 @@
 <input name="cat_rental_request[end_date]" id="end_date" type="date" value="<%= @request.end_date%>"></input>
 
 <input type="submit" value="<%=submit_text %>">
+
+</form>
