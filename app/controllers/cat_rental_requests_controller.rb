@@ -7,9 +7,6 @@ class CatRentalRequestsController < ApplicationController
   end
 
 
-
-
-
   def create
     @request = CatRentalRequest.new(request_params)
     if @request.save
@@ -24,6 +21,11 @@ class CatRentalRequestsController < ApplicationController
     @request = CatRentalRequest.find(params[:id])
     @cat = @request.cat
     render :request
+  end
+
+  def index
+    @requests = CatRentalRequest.all.order(cat_id: :asc).order(start_date: :desc)
+    render :show
   end
 
 
