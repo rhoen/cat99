@@ -5,7 +5,12 @@ Cats99::Application.routes.draw do
   # end
 
   resources :cat_rental_requests do
-    patch 'approve', on: :member 
+    patch 'approve', on: :member
     patch 'deny', on: :member
   end
+
+  resources :users, only: [:new, :create, :index, :show]
+
+  resource :sessions, only: [:new, :create]
+
 end

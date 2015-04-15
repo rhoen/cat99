@@ -4,7 +4,13 @@ class User < ActiveRecord::Base
 
   after_initialize :set_session_token
 
-
+  def self.find_by_credentials(user_name, password)
+    user = User.find_by_user_name(user_name)
+    if user
+      return user if user.is_password?(password)
+    end
+    nil
+  end
 
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)
