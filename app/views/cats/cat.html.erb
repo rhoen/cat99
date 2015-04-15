@@ -8,5 +8,20 @@
 <% end %>
 </table>
 <br><br>
+
+<ul>
+<% @requests.each do |request| %>
+    <li> <form action="/cat_rental_requests/:id/approve" method="post">
+       <button name="approve_request">Approve</button>
+
+
+
+
+
+
+
+
+
+
 <a href="<%= cats_url %>">ALL Cats</a><br>
 <a href="<%= edit_cat_url(@cat.id) %>">Edit Cat</a>

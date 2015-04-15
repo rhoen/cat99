@@ -4,6 +4,13 @@ class CatRentalRequest < ActiveRecord::Base
   belongs_to :cat
   STATI = ['PENDING','APPROVED','DENIED']
 
+  def approve!
+    CatRentalRequest.transaction do
+      self.save!
+      over_lapping_requests.where.("status = 'PENDING'")
+      .update_all("status = 'DENIED'")
+    end
+  end
 
   private
   def valid_status

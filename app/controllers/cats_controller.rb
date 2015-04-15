@@ -7,7 +7,7 @@ class CatsController < ApplicationController
 
   def show
     @cat = Cat.find(params[:id])
-
+    @requests = @cat.cat_rental_requests
     render :cat
   end
 
