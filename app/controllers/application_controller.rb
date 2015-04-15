@@ -20,7 +20,12 @@ class ApplicationController < ActionController::Base
     redirect_to cats_url
   end
 
-  def check_login
+  def not_logged_in
     redirect_to cats_url if current_user
   end
+
+  def logged_in
+    redirect_to new_sessions_url unless current_user
+  end
+
 end

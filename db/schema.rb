@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150415183205) do
+ActiveRecord::Schema.define(version: 20150415210240) do
 
   create_table "cat_rental_requests", force: true do |t|
     t.integer  "cat_id",                         null: false
@@ -32,10 +32,12 @@ ActiveRecord::Schema.define(version: 20150415183205) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "cats", ["birth_date"], name: "index_cats_on_birth_date"
   add_index "cats", ["name"], name: "index_cats_on_name"
+  add_index "cats", ["user_id"], name: "index_cats_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "user_name",       null: false

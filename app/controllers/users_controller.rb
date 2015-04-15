@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :check_login
+  before_action :not_logged_in
 
   def new
     @user = User.new
@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    fail
     @user = User.new(user_params)
     if @user.save
       set_session

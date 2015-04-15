@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :check_login, except: [:destroy]
+  before_action :not_logged_in, except: [:destroy]
 
   def create
     @user = User.find_by_credentials(user_params[:user_name],

@@ -1,5 +1,8 @@
 class CatRentalRequestsController < ApplicationController
 
+  before_action :logged_in, except: [:show, :index]
+
+
   def new
     @request = CatRentalRequest.new
     @cats = Cat.all
