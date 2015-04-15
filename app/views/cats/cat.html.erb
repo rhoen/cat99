@@ -11,8 +11,18 @@
 
 <ul>
 <% @requests.each do |request| %>
-    <li> <form action="/cat_rental_requests/:id/approve" method="post">
-       <button name="approve_request">Approve</button>
+    <li>
+      <%= request.start_date %> to <%= request.end_date %> status: <%= request.status %>
+      <form action="<%=approve_cat_rental_request_url(request.id) %>" method="post">
+        <%=hidden_patch%>
+
+       <button>Approve!</button></form><form action="<%=deny_cat_rental_request_url(request.id) %>" method="post">
+         <%=hidden_patch%>
+        <button>Deny!</button></form>
+    </li>
+
+<% end %>
+</ul>
 
 
 

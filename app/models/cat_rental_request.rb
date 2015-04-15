@@ -6,10 +6,16 @@ class CatRentalRequest < ActiveRecord::Base
 
   def approve!
     CatRentalRequest.transaction do
+      self.status = "APPROVED"
       self.save!
-      over_lapping_requests.where.("status = 'PENDING'")
+      over_lapping_requests.where("status = 'PENDING'")
       .update_all("status = 'DENIED'")
     end
+  end
+
+  def deny!
+    self.status = 'DENIED'
+    self.save!
   end
 
   private
@@ -33,7 +39,7 @@ class CatRentalRequest < ActiveRecord::Base
   def over_lapping_requests
     CatRentalRequest
       .where('cat_id = ?', cat_id)
-      .where('start_date < ? OR end_date > ?', end_date, start_date)
+      .where(' NOT (start_date < ? OR end_date > ?)', end_date, start_date)
       .where('id <> ?', id)
   end
 
