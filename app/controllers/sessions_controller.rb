@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
       session[:session_token] = @user.session_token
       redirect_to cats_url
     else
+      @user = User.new(user_params)
       render :new
     end
   end
