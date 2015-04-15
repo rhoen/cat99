@@ -1,5 +1,5 @@
 class Cat < ActiveRecord::Base
-  validates :name, presence: true
+  validates :name, :birth_date, presence: true
   validate :check_color
 
   has_many :cat_rental_requests, dependent: :destroy
@@ -20,6 +20,7 @@ class Cat < ActiveRecord::Base
   end
 
   def birthday
+    return nil if birth_date.nil?
     birth_date.strftime("%B %d, %Y")
   end
 

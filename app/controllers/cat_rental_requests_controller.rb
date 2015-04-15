@@ -1,6 +1,7 @@
 class CatRentalRequestsController < ApplicationController
 
   before_action :logged_in, except: [:show, :index]
+  before_action :verify_ownership, only: [:approve, :deny]
 
 
   def new
@@ -15,6 +16,7 @@ class CatRentalRequestsController < ApplicationController
     if @request.save
       redirect_to cat_rental_request_url(@request.id)
     else
+      @cats = Cat.all
       render :new
     end
   end
@@ -57,5 +59,10 @@ class CatRentalRequestsController < ApplicationController
     params.require(:cat_rental_request).permit(:start_date, :end_date, :cat_id, :status)
   end
 
+
+  def verify_ownership
+    @cat = Cat.find(params[:id])
+    redirect_to cat_url(@cat.id) unless @cat.user_id == current_user.id
+  end
 
 end

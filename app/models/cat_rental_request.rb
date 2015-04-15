@@ -1,6 +1,7 @@
 class CatRentalRequest < ActiveRecord::Base
   validate :valid_status
   validate :over_lapping_approved_requests
+  validates :start_date, :end_date, :cat_id, presence: true
   belongs_to :cat
   STATI = ['PENDING','APPROVED','DENIED']
 
